@@ -128,6 +128,10 @@ async function fetchSheetData() {
             Musica: obj.Musica || obj.musica || obj.MÚSICA || "",
             Idioma: obj.Idioma || obj.idioma || obj.IDIOMA || ""
         }));
+
+        // *** Ordenação automática pelo campo Idioma ***
+        musics.sort((a, b) => a.Idioma.localeCompare(b.Idioma, 'pt-BR', { sensitivity: 'base' }));
+
         filteredMusics = musics;
         renderTable();
         renderPagination();
